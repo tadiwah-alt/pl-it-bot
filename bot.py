@@ -16,6 +16,11 @@ else:
 
 app = App(token=bot_token)
 
+@app.command("/plfact")
+def handle_plfact(ack, say):
+    ack()
+    say("This is a test fact!")
+
 
 if __name__ == "__main__":
     SocketModeHandler(app, app_token).start()
