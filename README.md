@@ -82,7 +82,7 @@ pl-it-bot/
 
 Planned, not built yet:
 
-- [ ] Stop the same fact repeating back-to-back (shuffle-and-deal instead of pure random)
+- [x] Stop the same fact repeating back-to-back (shuffle-and-deal instead of pure random)
 - [ ] Grow and fact-check the facts list, with a more conversational tone
 - [ ] Scheduled daily fact posts
 - [ ] `/plquiz` command for interactive trivia
