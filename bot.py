@@ -4,10 +4,13 @@ from dotenv import load_dotenv
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 
-
+## Establish connection to the Slack app
 load_dotenv()
 bot_token = os.environ["SLACK_BOT_TOKEN"]
 app_token = os.environ["SLACK_APP_TOKEN"]
+
+
+## Dictionary containing facts
 facts = [
     {"football": "VAR reviews a decision before it's final", "it": "Terraform's plan step reviews changes before apply"},
     {"football": "A red card removes a player instantly", "it": "Revoking an IAM key instantly cuts off access"},
@@ -17,21 +20,39 @@ facts = [
 ]
 
 
+## Copy the facts dictionary into deck
+deck = facts.copy()
+
+
+
+## Confirm connection to Slack has been established or failed
 if bot_token and app_token:
     print("Bot Token and App Token Loaded")
 else:
     print("Failed")
 
 
+
+
 app = App(token=bot_token)
 
+
+## plfact command handler
 @app.command("/plfact")
 def handle_plfact(ack, say):
     ack()
+    global deck
 
-    chosen = random.choice(facts)
-    say(f'{chosen["football"]} -> {chosen["it"]}')
+    if not deck:
+        deck = facts.copy() 
     
+    
+    
+
+    ## Shuffle deck then pick a random fact from deck and post it
+    random.shuffle(deck)
+    chosen = deck.pop()
+    say(f'{chosen["football"]} -> {chosen["it"]}') 
 
 
 if __name__ == "__main__":
