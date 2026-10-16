@@ -83,9 +83,9 @@ pl-it-bot/
 Planned, not built yet:
 
 - [x] Stop the same fact repeating back-to-back (shuffle-and-deal instead of pure random)
-- [ ] Grow and fact-check the facts list, with a more conversational tone
+- [x] Grow and fact-check the facts list, with a more conversational tone
+- [x] `/plquiz` command for interactive trivia `/plreveal` command to display answer with explanation
 - [ ] Scheduled daily fact posts
-- [ ] `/plquiz` command for interactive trivia
 - [ ] Optional AI-generated analogies (v2)
 - [ ] Host it so it runs when my laptop is off (e.g. AWS Lambda with the Events API)
 
