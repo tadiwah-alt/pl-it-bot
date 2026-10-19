@@ -85,6 +85,7 @@ Planned, not built yet:
 - [x] Stop the same fact repeating back-to-back (shuffle-and-deal instead of pure random)
 - [x] Grow and fact-check the facts list, with a more conversational tone
 - [x] `/plquiz` command for interactive trivia `/plreveal` command to display answer with explanation
+- [x] `/plreveal [number]` command to submit your answer and get feedback
 - [ ] Scheduled daily fact posts
 - [ ] Optional AI-generated analogies (v2)
 - [ ] Host it so it runs when my laptop is off (e.g. AWS Lambda with the Events API)
