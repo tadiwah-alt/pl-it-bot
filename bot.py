@@ -169,19 +169,39 @@ def handle_plfact(ack, say):
 
 ## plreveal command handler
 @app.command("/plreveal")
-def handle_plreveal(ack, say):
+def handle_plreveal(ack, say, respond, command):
     ack()
     global question
 
     if question is None:
         say("There isn't a quiz question to reveal yet. Run /plquiz first.")
         return
+    else:
+        answer = question["choices"][question["answer"] - 1]
+    
 
-    answer = question["choices"][question["answer"] - 1]
-    say(f'Answer: {answer}\n{question["explanation"]}')
+    
+    if command["text"] == '':
+        say(f'Answer: {answer}\n{question["explanation"]}')
+        return
+    
+    try:
+        number = int(command["text"])
+    except ValueError:
+        say("Please provide a valid choice e.g /plreveal 2")
+        return
+
+        
+    if number <= 0 or number > len(question["choices"]):
+        say("Please provide a valid choice e.g /plreveal 2")
+        return
+    elif number == question["answer"]:
+        respond(f'Correct\n{question["explanation"]}')
+    else:
+        respond(f'Wrong\nAnswer: {answer}\n{question["explanation"]}')
+
+
     question = None
-
-
 
 
 ## plquiz command handler
